@@ -32,7 +32,7 @@ class ExpensesController < ApplicationController
 
   def destroy
     @expense.destroy
-    redirect_to categories_path, notice: 'Gasto eliminado correctamente.'
+    redirect_to expenses_path, notice: 'Gasto eliminado correctamente.'
   end
 
   private
