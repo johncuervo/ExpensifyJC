@@ -4,7 +4,6 @@ class ExpensesController < ApplicationController
   def index
     @tab = :expenses
     @categories = Category.all
-    @expenses = Expense.all
   end
 
   def new
@@ -44,5 +43,5 @@ class ExpensesController < ApplicationController
     def expense_params
       params.require(:expense).permit(:date, :amount, :concept, :type_id, :category_id, :user_id)
     end
-  
+
 end

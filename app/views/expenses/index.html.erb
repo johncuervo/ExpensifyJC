@@ -10,10 +10,11 @@
 
       <h4 class="filter-header">Categoría <span>Selecciona para filtrar</span></h4>
       <div class="list-group filter-type">
-        <a href="#" class="list-group-item">Restaurants</a>
-        <a href="#" class="list-group-item">Car</a>
-        <!-- more categories  -->
+        <% @categories.each do |category| %>
+        <a href="#" class="list-group-item"><%= category.name %></a>
+        <% end %>
       </div>
+      <%= link_to  "Categories", categories_path, class:"btn btn-success pull-left glyphicon glyphicon-plus" %>
     </div>
     <div class="col-md-9 index-data">
       <div class="row" style="margin-top: 10px;">
@@ -74,10 +75,10 @@
               <div class="actions">
                 <a href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a>
                 <a href="#"><span class="glyphicon glyphicon-trash"></span> Delete</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
