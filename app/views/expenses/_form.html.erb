@@ -5,7 +5,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
             aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Crear Gasto</h4>
+        <h4 class="modal-title"><%= title %></h4>
       </div>
       <div class="modal-body">
 ​
@@ -44,7 +44,7 @@
           <div class="col-sm-6">
             <div class="form-group">
               <%= f.label :cantidad %>
-              <%= f.text_field :amount,  class: "form-control", placeholder: "Ingrese nueva categoria" %>
+              <%= f.text_field :amount, class: "form-control", data: {autonumeric: true} %>
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        <%= f.submit "Crear", class: "btn btn-default" %>
+        <%= f.submit title, class: "btn btn-default" %>
       </div>
       <% end %>
     </div><!-- /.modal-content -->

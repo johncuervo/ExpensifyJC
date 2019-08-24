@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root "dashboard#index"
+  # root :to => redirect("/users/sign_in")
+
 
   resources :expenses
   resources :categories
