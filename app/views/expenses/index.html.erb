@@ -11,7 +11,7 @@
       <h4 class="filter-header">Categoría <span>Selecciona para filtrar</span></h4>
       <div class="list-group filter-type">
         <% @categories.each do |category| %>
-        <a href="#" class="list-group-item"><%= category.name %></a>
+          <a href="#" class="list-group-item"><%= category.name %></a>
         <% end %>
       </div>
       <%= link_to  "Categories", categories_path, class:"btn btn-success pull-left glyphicon glyphicon-plus" %>
@@ -21,7 +21,7 @@
         <div class="summary-box col-md-4 text-center">
           <div class="summary-value">$2,500,000</div>
           <div class="summary-label">Total</div>
-        </diV>
+        </div>
         <div class="summary-box col-md-4 text-center">
           <div class="summary-value">2</div>
           <div class="summary-label">Transactions</div>
@@ -34,7 +34,7 @@
 
       <div class="row" style="margin-top: 20px;">
         <div class="col-md-12">
-          <a href="#" class="btn btn-success pull-left"><span class="glyphicon glyphicon-plus"></span> New Expense</a>
+          <%= link_to  "New Expense", new_expense_path, remote: true, class:"btn btn-success pull-left" %>
           <h4 class="dropdown pull-right">
             <button type="button" class="dropdown-toggle btn btn-link" data-toggle="dropdown">April 2016 <span class="caret"></span></button>
             <ul class="dropdown-menu" role="menu">
@@ -56,27 +56,30 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td class="date">
-              <div class="day">24</div>
-              <div class="month">Apr</div>
-            </td>
-            <td>
-              <div>
-                <span class="type">Purchase</span>
-              </div>
-              <div>
-                <span class="concept">Example concept</span>
-              </div>
-            </td>
-            <td class="category text-right">Restauratns</td>
-            <td class="text-right" style="width: 170px;">
-              <div class="amount">$1,000,000</div>
-              <div class="actions">
-                <a href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                <a href="#"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+          <% @expenses.each do |expense| %>
+            <tr>
+              <td class="date">
+                <div class="day"><%= expense.date.strftime( "%d" ) %></div>
+                <div class="month"><%= expense.date.strftime( "%B" ) %></div>
+              </td>
+              <td>
+                <div>
+                  <span class="type"><%= expense.type.name %></span>
+                </div>
+                <div>
+                  <span class="concept"><%= expense.concept %></span>
+                </div>
+              </td>
+              <td class="category text-right"><%= expense.category.name %></td>
+              <td class="text-right" style="width: 170px;">
+                <div class="amount"><%= expense.amount %></div>
+                <div class="actions">
+                  <%= link_to  "Edit", edit_expense_path(expense), remote: true, class:"glyphicon glyphicon-edit" %>
+                  <%= link_to  "Delete", expense, method: :delete, data: { confirm: "¿Estás seguro de eliminar este Expense?" }, class:"glyphicon glyphicon-trash" %>
               </td>
             </tr>
+          <% end %>
+
           </tbody>
         </table>
       </div>
